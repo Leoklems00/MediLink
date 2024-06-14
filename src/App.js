@@ -5,7 +5,8 @@ import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import UserProfile from './components/UserProfile';
 import Settings from './pages/Settings';
-import Appointments from './pages/Appointment'; // Add this import
+import Appointments from './pages/Appointment';
+import ExpertsPage from './pages/ExpertsPage';
 
 function App() {
   return (
@@ -16,7 +17,8 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/user-profile" element={<UserProfile />} />
         <Route path="/settings" element={<Settings />} />
-        <Route path="/appointments" element={<Appointments />} /> {/* Add this route */}
+        <Route path="/appointments" element={<Appointments />} />
+        <Route path="/experts" element={<ExpertsPage />} />
       </Routes>
     </Router>
   );

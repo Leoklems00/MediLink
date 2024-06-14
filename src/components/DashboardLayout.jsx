@@ -12,6 +12,7 @@ const DashboardLayout = ({ children }) => {
           <Link to="/" className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">Home</Link>
           <Link to="/user-profile" className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 active:bg-gray-800">Profile</Link>
           <Link to="/appointments" className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">Appointments</Link>
+          <Link to="/experts" className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">Experts</Link>
           <Link to="/settings" className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">Settings</Link>
         </nav>
       </aside>
