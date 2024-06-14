@@ -5,6 +5,7 @@ import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import UserProfile from './components/UserProfile';
 import Settings from './pages/Settings';
+import Appointments from './pages/Appointment'; // Add this import
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/user-profile" element={<UserProfile />} />
         <Route path="/settings" element={<Settings />} />
+        <Route path="/appointments" element={<Appointments />} /> {/* Add this route */}
       </Routes>
     </Router>
   );
