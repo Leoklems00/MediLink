@@ -1,17 +1,8 @@
-import React, { useState } from 'react';
-import DashboardLayout from '../components/DashboardLayout';
-import ContactExpert from '../components/ContactExpert';
+import React from 'react';
+import DashboardLayout from '../components/DashboardLayout'
 
 const UserProfile = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
+ 
 
   return (
     <DashboardLayout>
@@ -29,13 +20,12 @@ const UserProfile = () => {
           <label className="block text-gray-700 font-medium mb-1">Specialization:</label>
           <p className="border-b p-2 text-gray-900">General Practitioner</p>
         </div>
-        <button
-          className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-200"
-          onClick={openModal}
-        >
-          Contact an Expert
-        </button>
-        <ContactExpert isOpen={isModalOpen} onClose={closeModal} />
+        <a href='#settings'
+        
+            className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+          >
+            Update
+            </a>
       </div>
     </DashboardLayout>
   );
