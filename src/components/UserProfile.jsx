@@ -20,7 +20,7 @@ const UserProfile = () => {
           <label className="block text-gray-700 font-medium mb-1">Specialization:</label>
           <p className="border-b p-2 text-gray-900">General Practitioner</p>
         </div>
-        <a href='#settings'
+        <a href='/settings'
         
             className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
           >
