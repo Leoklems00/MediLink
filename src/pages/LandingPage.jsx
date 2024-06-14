@@ -1,8 +1,11 @@
 // src/components/LandingPage.js
 import React from 'react';
+import Navbar from '../components/Navbar';
 
 const LandingPage = () => {
   return (
+    <div className="">
+    <Navbar />
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="max-w-4xl mx-auto text-center p-8">
         <h1 className="text-4xl font-bold mb-6">Welcome to Medilink</h1>
@@ -16,6 +19,7 @@ const LandingPage = () => {
           </button>
         </div>
       </div>
+    </div>
     </div>
   );
 };
