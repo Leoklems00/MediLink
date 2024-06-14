@@ -5,13 +5,15 @@ const ExpertsPage = () => {
   // Mock data for experts (replace with actual data from API or state management)
   const experts = [
     { id: 1, name: 'Dr. Klemz', specialization: 'Cardiologist', contactInfo: 'klem@gmail.com' },
-    { id: 2, name: 'Dr. Chisom', specialization: 'Dermatologist', contactInfo: 'chisom@gmail.com' },
+    { id: 2, name: 'Dr. Enzyme', specialization: 'Dermatologist', contactInfo: 'enzyme@gmail.com' },
     { id: 3, name: 'Dr. Liz Brown', specialization: 'Psychiatrist', contactInfo: 'liz@gmail.com' },
   ];
 
-  // State to manage modal visibility and selected expert
+  // State to manage modal visibility, selected expert, review, and contact status
   const [showModal, setShowModal] = useState(false);
   const [selectedExpert, setSelectedExpert] = useState(null);
+  const [review, setReview] = useState('');
+  const [contacted, setContacted] = useState(false);
 
   const handleViewDetails = (expert) => {
     setSelectedExpert(expert);
@@ -21,13 +23,23 @@ const ExpertsPage = () => {
   const handleCloseModal = () => {
     setShowModal(false);
     setSelectedExpert(null);
+    setReview('');
+    setContacted(false); // Reset contacted status when modal closes
   };
 
   const handleContactExpert = () => {
     // Implement contact logic here (e.g., open email client with expert's contactInfo)
     if (selectedExpert) {
       window.open(`mailto:${selectedExpert.contactInfo}`, '_blank');
+      setContacted(true); // Set contacted status to true after contacting expert
     }
+  };
+
+  const handleSubmitReview = () => {
+    // Implement logic to submit review (e.g., send data to backend)
+    // For demonstration, we log the review locally
+    console.log(`Submitted review for ${selectedExpert.name}: ${review}`);
+    handleCloseModal(); // Close modal after submitting review
   };
 
   return (
@@ -45,7 +57,7 @@ const ExpertsPage = () => {
                 className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-200"
                 onClick={() => handleViewDetails(expert)}
               >
-                View Details
+                {contacted ? 'Submit Review' : 'Contact Expert'}
               </button>
             </div>
           ))}
@@ -80,12 +92,31 @@ const ExpertsPage = () => {
               <label className="block text-gray-700 font-medium mb-1">Contact Info:</label>
               <p className="border-b p-2 text-gray-900">{selectedExpert.contactInfo}</p>
             </div>
-            <button
-              className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-200 mb-2"
-              onClick={handleContactExpert}
-            >
-              Contact Expert
-            </button>
+            {!contacted && (
+              <button
+                className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-200 mb-2"
+                onClick={handleContactExpert}
+              >
+                Contact Expert
+              </button>
+            )}
+            {contacted && (
+              <>
+                <textarea
+                  className="border p-2 mb-4 w-full rounded-md"
+                  rows="4"
+                  placeholder="Write your review..."
+                  value={review}
+                  onChange={(e) => setReview(e.target.value)}
+                ></textarea>
+                <button
+                  className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-200 mb-2"
+                  onClick={handleSubmitReview}
+                >
+                  Submit Review
+                </button>
+              </>
+            )}
             <button
               className="w-full bg-gray-200 text-gray-700 py-2 px-4 rounded hover:bg-gray-300 transition duration-200"
               onClick={handleCloseModal}
