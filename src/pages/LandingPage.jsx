@@ -16,9 +16,13 @@ const LandingPage = () => {
         <div className="relative bg-white bg-opacity-75 p-8 rounded-lg text-center max-w-4xl mx-auto">
           <h1 className="text-4xl font-bold mb-6">Welcome to Medilink</h1>
           <p className="text-lg text-gray-700 mb-8">Connecting doctors and patients for better healthcare.</p>
-          <div className="flex justify-center space-x-4 mb-12">
+          <div className="md:flex justify-center space-y-7 md:space-y-0 md:space-x-4 md:mb-12">
+            <div className="">
             <Link to="/contact" className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg shadow-lg">Contact Us</Link>
+            </div>
+            <div className="">
             <Link to="/experts" className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg">Find an Expert</Link>
+            </div>
           </div>
         </div>
       </div>
