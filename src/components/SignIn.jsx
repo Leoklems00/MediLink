@@ -5,7 +5,7 @@ import api from "../api";
 import { Link } from 'react-router-dom'; // If using React Router for navigation
 import { useNavigate } from "react-router-dom";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
-import "../styles/Form.css"
+// import "../styles/Form.css"
 import LoadingIndicator from "./LoadingIndicator";
 
 const SignIn = () => {
@@ -72,6 +72,7 @@ const SignIn = () => {
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
           </div>
+          {loading && <LoadingIndicator />}
           <button
             type="submit"
             className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
