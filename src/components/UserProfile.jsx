@@ -1,7 +1,25 @@
 import React from 'react';
+import { useState } from "react";
+import api from "../api";
 import DashboardLayout from '../components/DashboardLayout'
 
 const UserProfile = () => {
+  const [user, setUser] = useState([]);
+  useEffect(() => {
+      getUser();
+    }, []);
+
+  const getUser = () => {
+      api
+          .get("patient/1/")
+          .then((res) => res.data)
+          .then((data) => {
+              setUser(data);
+              console.log(data);
+          })
+          .catch((err) => alert(err));
+    };
+  // };
  
 
   return (
@@ -10,11 +28,11 @@ const UserProfile = () => {
         <h2 className="text-3xl font-semibold mb-4">User Profile</h2>
         <div className="mb-4">
           <label className="block text-gray-700 font-medium mb-1">Name:</label>
-          <p className="border-b p-2 text-gray-900">Klemz Chisom</p>
+          <p className="border-b p-2 text-gray-900">{user.name}</p>
         </div>
         <div className="mb-4">
           <label className="block text-gray-700 font-medium mb-1">Email:</label>
-          <p className="border-b p-2 text-gray-900">ezyme@gmail.com</p>
+          <p className="border-b p-2 text-gray-900">user.user.email</p>
         </div>
         <div className="mb-4">
           <label className="block text-gray-700 font-medium mb-1">Specialization:</label>

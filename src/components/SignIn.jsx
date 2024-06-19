@@ -18,10 +18,16 @@ const SignIn = () => {
     setLoading(true);
     e.preventDefault();
     // Handle sign-in logic here
-    try {
+    try { 
+      const userData = {
+        "user": {
+          "email": email,
+          "password": password,
+        },
+      }
 
       // const res = await api.post(route, { username, password })
-      const res = await api.post("/api/token/", { email, password })
+      const res = await api.post("/api/token/", { userData })
 
       // if (method === "login") {
           localStorage.setItem(ACCESS_TOKEN, res.data.access);
