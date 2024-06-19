@@ -20,8 +20,16 @@ const SignUp = () => {
     // Handle sign-in logic here
     try {
 
+      const userData = {
+        "name": name,
+        "user": {
+          "email": email,
+          "password": password,
+        },
+      }
+
       // const res = await api.post(route, { username, password })
-      api.post("/patient/register/", { name, email, password })
+      api.post("/patient/register/", userData)
 
       // if (method === "login") {
           // localStorage.setItem(ACCESS_TOKEN, res.data.access);
