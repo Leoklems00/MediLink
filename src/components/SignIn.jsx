@@ -1,11 +1,37 @@
 // src/components/SignIn.js
 import React from 'react';
+import { useState } from "react";
+import api from "../api";
 import { Link } from 'react-router-dom'; // If using React Router for navigation
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
 
 const SignIn = () => {
-  const handleSubmit = (e) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
     // Handle sign-in logic here
+    try {
+
+      // const res = await api.post(route, { username, password })
+      const res = await api.post("/api/token/", { username, password })
+
+      // if (method === "login") {
+          localStorage.setItem(ACCESS_TOKEN, res.data.access);
+          localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
+          navigate("/")
+      // } else {
+      //     navigate("/login")
+      // }
+    } catch (error) {
+        alert(error)
+    } finally {
+        setLoading(false)
+    }
   };
 
   return (
@@ -21,6 +47,9 @@ const SignIn = () => {
               type="email"
               id="email"
               name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email"
               required
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
@@ -33,6 +62,9 @@ const SignIn = () => {
               type="password"
               id="password"
               name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
               required
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
