@@ -1,8 +1,16 @@
 // src/components/SignUp.js
 import React from 'react';
 import { Link } from 'react-router-dom'; // If using React Router for navigation
+import { useNavigate } from "react-router-dom";
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
+import "../styles/Form.css"
+import LoadingIndicator from "./LoadingIndicator";
 
 const SignUp = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle sign-up logic here
