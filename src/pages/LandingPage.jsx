@@ -21,7 +21,7 @@ const LandingPage = () => {
             <Link to="/contact" className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg shadow-lg">Contact Us</Link>
             </div>
             <div className="">
-            <Link to="/experts" className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg">Find an Expert</Link>
+            <Link to="/signin" className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg">Find an Expert</Link>
             </div>
           </div>
         </div>

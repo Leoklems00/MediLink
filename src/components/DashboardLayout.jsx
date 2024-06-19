@@ -5,7 +5,7 @@ const DashboardLayout = ({ children }) => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   const user = {
-    name: 'Klemz Chisom',
+    name: 'Obumneme Clement',
     profilePicture: '/img/user.jpeg'
   };
 
@@ -26,12 +26,12 @@ const DashboardLayout = ({ children }) => {
         {/* Sidebar */}
         <aside className={`bg-blue-600 text-white w-64 space-y-6 py-7 px-2 flex flex-col absolute lg:relative z-10 lg:z-auto ${isSidebarOpen ? 'block' : 'hidden'} lg:block`}>
           <div className="text-white text-2xl font-bold px-4 text-center">
-            <Link to="/landing" className="text-white text-lg font-semibold">
-              <img src="/img/logo.jpeg" alt="Logo" className="h-12 w-12 mr-2" />
+            <Link to="/" className="text-white text-lg font-semibold">
+              <img src="/img/medilink.png" alt="Logo" className="h-12 w-12 mr-2" />
             </Link>
           </div>
           <nav>
-            <Link to="/landing" className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-400">Home</Link>
+            <Link to="/" className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-400">Home</Link>
             <Link to="/user-profile" className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-400 active:bg-gray-800">Profile</Link>
             <Link to="/appointments" className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-400">Appointments</Link>
             <Link to="/experts" className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-400">Experts</Link>
