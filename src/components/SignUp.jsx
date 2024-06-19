@@ -4,7 +4,7 @@ import api from "../api";
 import { useState } from "react";
 import { Link } from 'react-router-dom'; // If using React Router for navigation
 import { useNavigate } from "react-router-dom";
-import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
+// import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
 // import "../styles/Form.css"
 import LoadingIndicator from "./LoadingIndicator";
 
@@ -21,11 +21,11 @@ const SignUp = () => {
     try {
 
       // const res = await api.post(route, { username, password })
-      const res = await api.post("/patient/register/", { name, email, password })
+      api.post("/patient/register/", { name, email, password })
 
       // if (method === "login") {
-          localStorage.setItem(ACCESS_TOKEN, res.data.access);
-          localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
+          // localStorage.setItem(ACCESS_TOKEN, res.data.access);
+          // localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
           navigate("/user-profile")
       // } else {
       //     navigate("/login")
