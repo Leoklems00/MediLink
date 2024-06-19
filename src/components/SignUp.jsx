@@ -1,8 +1,9 @@
 // src/components/SignUp.js
 import React from 'react';
+import api from "../api";
 import { useState } from "react";
 import { Link } from 'react-router-dom'; // If using React Router for navigation
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
 // import "../styles/Form.css"
 import LoadingIndicator from "./LoadingIndicator";
@@ -25,7 +26,7 @@ const SignUp = () => {
       // if (method === "login") {
           // localStorage.setItem(ACCESS_TOKEN, res.data.access);
           // localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
-          navigate("/")
+          navigate("/user-profile")
       // } else {
       //     navigate("/login")
       // }
