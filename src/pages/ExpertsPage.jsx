@@ -4,17 +4,16 @@ import DashboardLayout from '../components/DashboardLayout';
 const ExpertsPage = () => {
   // Mock data for experts (replace with actual data from API or state management)
   const experts = [
-    { id: 1, name: 'Dr. Liz Brown', specialization: 'Cardiologist', location: 'Abuja', phone: '09126555885' },
-    { id: 2, name: 'Dr. Enzyme Smith', specialization: 'Dermatologist', location: 'Lagos', phone: '09126555885' },
-    { id: 3, name: 'Dr. Emily Johnson', specialization: 'Psychiatrist', location: 'Kano', phone: '09126555885' },
-    { id: 4, name: 'Dr. Michael Brown', specialization: 'Psychiatrist', location: 'Niger', phone: '09126555885' },
+    { id: 1, name: 'Dr. Klemz', specialization: 'Cardiologist', contactInfo: 'klem@gmail.com' },
+    { id: 2, name: 'Dr. Enzyme', specialization: 'Dermatologist', contactInfo: 'enzyme@gmail.com' },
+    { id: 3, name: 'Dr. Liz Brown', specialization: 'Psychiatrist', contactInfo: 'liz@gmail.com' },
   ];
 
+  // State to manage modal visibility, selected expert, review, and contact status
   const [showModal, setShowModal] = useState(false);
   const [selectedExpert, setSelectedExpert] = useState(null);
   const [review, setReview] = useState('');
-  const [searchCriteria, setSearchCriteria] = useState({ specialization: '', location: '' });
-  const [filteredExperts, setFilteredExperts] = useState(experts);
+  const [contacted, setContacted] = useState(false);
 
   const handleViewDetails = (expert) => {
     setSelectedExpert(expert);
@@ -25,77 +24,50 @@ const ExpertsPage = () => {
     setShowModal(false);
     setSelectedExpert(null);
     setReview('');
+    setContacted(false); // Reset contacted status when modal closes
+  };
+
+  const handleContactExpert = () => {
+    // Implement contact logic here (e.g., open email client with expert's contactInfo)
+    if (selectedExpert) {
+      window.open(`mailto:${selectedExpert.contactInfo}`, '_blank');
+      setContacted(true); // Set contacted status to true after contacting expert
+    }
   };
 
   const handleSubmitReview = () => {
+    // Implement logic to submit review (e.g., send data to backend)
+    // For demonstration, we log the review locally
     console.log(`Submitted review for ${selectedExpert.name}: ${review}`);
-    handleCloseModal();
-  };
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-    const filtered = experts.filter(
-      (expert) =>
-        (searchCriteria.specialization === '' || expert.specialization.toLowerCase().includes(searchCriteria.specialization.toLowerCase())) &&
-        (searchCriteria.location === '' || expert.location.toLowerCase().includes(searchCriteria.location.toLowerCase()))
-    );
-    setFilteredExperts(filtered);
+    handleCloseModal(); // Close modal after submitting review
   };
 
   return (
     <DashboardLayout>
-      <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-2xl mt-4 sm:mt-20 mx-auto">
-        <h2 className="text-3xl font-semibold mb-4 text-center">Find an Expert</h2>
-        <form onSubmit={handleSearch}>
-          <div className="mb-4">
-            <input
-              type="text"
-              className="border p-2 w-full rounded-md mb-2"
-              placeholder="Specialization"
-              value={searchCriteria.specialization}
-              onChange={(e) => setSearchCriteria({ ...searchCriteria, specialization: e.target.value })}
-            />
-            <input
-              type="text"
-              className="border p-2 w-full rounded-md"
-              placeholder="Location"
-              value={searchCriteria.location}
-              onChange={(e) => setSearchCriteria({ ...searchCriteria, location: e.target.value })}
-            />
-            <button
-              type="submit"
-              className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-200 mt-2"
-            >
-              Search
-            </button>
-          </div>
-        </form>
-        <h3 className="text-2xl font-semibold mb-4 text-center">Available Experts</h3>
+      <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-2xl mt-4 sm:mt-20">
+        <h2 className="text-3xl font-semibold mb-4">Available Experts</h2>
         <div className="space-y-4">
-          {filteredExperts.length > 0 ? (
-            filteredExperts.map((expert) => (
-              <div key={expert.id} className="border rounded-lg p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between">
-                <div className="flex-grow">
-                  <h3 className="text-xl font-semibold">{expert.name}</h3>
-                  <p className="text-gray-700">{expert.specialization} - {expert.location}</p>
-                </div>
-                <button
-                  className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-200 mt-2 sm:mt-0 sm:ml-4"
-                  onClick={() => handleViewDetails(expert)}
-                >
-                  Leave a Review
-                </button>
+          {experts.map((expert) => (
+            <div key={expert.id} className="border rounded-lg p-4 flex items-center justify-between">
+              <div>
+                <h3 className="text-xl font-semibold">{expert.name}</h3>
+                <p className="text-gray-700">{expert.specialization}</p>
               </div>
-            ))
-          ) : (
-            <p className="text-gray-700">No experts found for the selected criteria.</p>
-          )}
+              <button
+                className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-200"
+                onClick={() => handleViewDetails(expert)}
+              >
+                {contacted ? 'Submit Review' : 'View Expert'}
+              </button>
+            </div>
+          ))}
         </div>
       </div>
 
+      {/* Expert Details Modal */}
       {showModal && selectedExpert && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-75 z-50">
-          <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md mx-4">
+          <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-2xl font-semibold">Expert Details</h2>
               <button
@@ -117,26 +89,34 @@ const ExpertsPage = () => {
               <p className="border-b p-2 text-gray-900">{selectedExpert.specialization}</p>
             </div>
             <div className="mb-4">
-              <label className="block text-gray-700 font-medium mb-1">Location:</label>
-              <p className="border-b p-2 text-gray-900">{selectedExpert.location}</p>
-            </div>
-            <div className="mb-4">
               <label className="block text-gray-700 font-medium mb-1">Contact Info:</label>
-              <p className="border-b p-2 text-gray-900">{selectedExpert.phone}</p>
+              <p className="border-b p-2 text-gray-900">{selectedExpert.contactInfo}</p>
             </div>
-            <textarea
-              className="border p-2 mb-4 w-full rounded-md"
-              rows="4"
-              placeholder="Write your review..."
-              value={review}
-              onChange={(e) => setReview(e.target.value)}
-            ></textarea>
-            <button
-              className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-200 mb-2"
-              onClick={handleSubmitReview}
-            >
-              Submit Review
-            </button>
+            {!contacted && (
+              <button
+                className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-200 mb-2"
+                onClick={handleContactExpert}
+              >
+                Contact Expert
+              </button>
+            )}
+            {contacted && (
+              <>
+                <textarea
+                  className="border p-2 mb-4 w-full rounded-md"
+                  rows="4"
+                  placeholder="Write your review..."
+                  value={review}
+                  onChange={(e) => setReview(e.target.value)}
+                ></textarea>
+                <button
+                  className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-200 mb-2"
+                  onClick={handleSubmitReview}
+                >
+                  Submit Review
+                </button>
+              </>
+            )}
             <button
               className="w-full bg-gray-200 text-gray-700 py-2 px-4 rounded hover:bg-gray-300 transition duration-200"
               onClick={handleCloseModal}
