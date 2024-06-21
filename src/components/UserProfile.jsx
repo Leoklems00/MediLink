@@ -43,6 +43,7 @@ const UserProfile = () => {
       const email = response.data.email;
       const name_ = response.data.name;
       const id = response.data.id;
+      setEmail(email);
       setName(name_);
       setId(id);
       console.log(user)
@@ -51,7 +52,7 @@ const UserProfile = () => {
 
   const getUser = async () => {
     try {
-      const res = await api.get("patient/id/");
+      const res = await api.get(`patient/${id}/`);
       const data = res.data;
       console.log("API response data:", data);
       setUser(data);
@@ -111,6 +112,7 @@ const UserProfile = () => {
         >
           Find an Expert
         </button>
+        {email || 'klemz@gmail.com'}
       </div>
 
       <Modal isOpen={isModalOpen} onClose={handleModalClose}>
