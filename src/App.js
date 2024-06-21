@@ -7,18 +7,20 @@ import UserProfile from './components/UserProfile';
 import Settings from './pages/Settings';
 import Appointments from './pages/Appointment';
 import ExpertsPage from './pages/ExpertsPage';
+import ExpertSearchResults from './pages/ExpertSearchResults';
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/landing" element={<LandingPage />} />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/signin" element={<SignIn />} />
-        <Route path="/" element={<SignUp />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/user-profile" element={<UserProfile />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/appointments" element={<Appointments />} />
         <Route path="/experts" element={<ExpertsPage />} />
+        <Route path="/experts/:specialization/:location" element={<ExpertSearchResults />} />
       </Routes>
     </Router>
   );

@@ -49,7 +49,7 @@ const SignUp = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="max-w-md w-full bg-white p-8 rounded-lg shadow-lg">
-        <h2 className="text-4xl font-bold mb-6 ">Welcome to Medilink</h2>
+        <h2 className="text-xl md:text-4xl font-bold mb-6 text-center">Welcome to Medilink</h2>
         <h2 className="text-2xl font-bold text-center mb-6 text-green-500">Sign Up</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
