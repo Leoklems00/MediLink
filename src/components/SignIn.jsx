@@ -20,7 +20,7 @@ const SignIn = () => {
     // Handle sign-in logic here
     try { 
       console.log(email)
-      api.post('/api/get-auth-data/', {email})
+      await api.post('/api/get-auth-data/', {email})
     .then(response =>  {
       const data = response.data;
       if (data.error) {
