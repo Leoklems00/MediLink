@@ -56,7 +56,7 @@ const SignIn = () => {
         
     });
 
-      await api.post("/api/token/", userData)
+      api.post("/api/token/", userData)
     
           // if (method === "login") {
               // localStorage.setItem(ACCESS_TOKEN, res.data.access);
