@@ -39,13 +39,13 @@ const SignIn = () => {
         console.log(userData)
         // const res = await api.post("/api/token/", { userData })
         // const res = api.post("/api/token/", userData)
-        api.post("/api/token/", userData)
+        // api.post("/api/token/", userData)
   
-        // if (method === "login") {
-            // localStorage.setItem(ACCESS_TOKEN, res.data.access);
-            // localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
+        // // if (method === "login") {
+        //     // localStorage.setItem(ACCESS_TOKEN, res.data.access);
+        //     // localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
             
-            navigate("/user-profile/")
+        //     navigate("/user-profile/")
       }
       
     })
@@ -55,6 +55,13 @@ const SignIn = () => {
         
     });
 
+      await api.post("/api/token/", userData)
+    
+          // if (method === "login") {
+              // localStorage.setItem(ACCESS_TOKEN, res.data.access);
+              // localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
+              
+              navigate("/user-profile/")
       
     } catch (error) {
         alert(error)
