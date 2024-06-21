@@ -38,7 +38,11 @@ const SignIn = () => {
         // setUserData(userData);
         // const res = await api.post(route, { username, password })
         console.log(userData)
-        const res = api.post("/api/token/", {username, password})
+        const res = api.post("/api/token/", {username, password}).
+        then(response =>  {
+          const data = response.data;
+          console.log(data)
+        });
     
           // if (method === "login") {
               // localStorage.setItem(ACCESS_TOKEN, res.data.access);
