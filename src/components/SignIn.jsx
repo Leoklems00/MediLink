@@ -10,6 +10,7 @@ import LoadingIndicator from "./LoadingIndicator";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
+  const [userData, setUserData] = useState({});
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ const SignIn = () => {
           "username": username,
           "password": password,
         }
-  
+        setUserData(userData);
         // const res = await api.post(route, { username, password })
         console.log(userData)
         // const res = await api.post("/api/token/", { userData })
