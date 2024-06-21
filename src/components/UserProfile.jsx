@@ -6,6 +6,8 @@ import Modal from '../components/modal';
 
 const UserProfile = () => {
   const [user, setUser] = useState(null);
+  const [id, setId] = useState(null);
+  const [name_, setName] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -31,9 +33,23 @@ const UserProfile = () => {
     getUser();
   }, []);
 
+  api.get('/api/get-user/', {
+      // headers: {
+      //     Authorization: `Bearer ${accessToken}`,
+      // },
+  })
+  .then(response => {
+      const user = response.data.user;
+      const name_ = response.data.name;
+      setName(name_);
+      setId(id);
+      console.log(user)
+      console.log(name_)
+  })
+
   const getUser = async () => {
     try {
-      const res = await api.get("patient/1/");
+      const res = await api.get("patient/id/");
       const data = res.data;
       console.log("API response data:", data);
       setUser(data);
@@ -81,7 +97,7 @@ const UserProfile = () => {
         <h2 className="text-3xl font-semibold mb-4">User Profile</h2>
         <div className="mb-4">
           <label className="block text-gray-700 font-medium mb-1">Name:</label>
-          <p className="border-b p-2 text-gray-900">{user.name || 'N/A'}</p>
+          <p className="border-b p-2 text-gray-900">{name_ || 'N/A'}</p>
         </div>
         <div className="mb-4">
           <label className="block text-gray-700 font-medium mb-1">Email:</label>
