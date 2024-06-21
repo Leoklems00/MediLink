@@ -59,9 +59,10 @@ const SignIn = () => {
     const res = api.post("/api/token/", userData)
     
           // if (method === "login") {
-              localStorage.setItem(ACCESS_TOKEN, res.data.access);
-              localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
-              
+              // localStorage.setItem(ACCESS_TOKEN, res.data.access);
+              // localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
+              const accessToken = res.data.access
+              console.log(accessToken)
               navigate("/user-profile/")
       
     } catch (error) {
