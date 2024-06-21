@@ -32,7 +32,7 @@ const UserProfile = () => {
 
   useEffect(() => {
     getUser();
-  }, []);
+  });
 
 
   const getUser = async () => {
