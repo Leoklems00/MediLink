@@ -38,7 +38,7 @@ const UserProfile = () => {
   const getUser = async () => {
 
     try {
-      api.get('/api/get-user/', {
+      api.get('/api/get-patient/', {
           // headers: {
           //     Authorization: `Bearer ${accessToken}`,
           // },
@@ -50,7 +50,7 @@ const UserProfile = () => {
           setEmail(email);
           setName(name_);
           setId(id);
-          console.log(user)
+          console.log(id)
           console.log(name_)
       })
       const res = await api.get(`patient/${id}/`);
