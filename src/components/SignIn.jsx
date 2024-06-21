@@ -25,6 +25,7 @@ const SignIn = () => {
       }
 
       // const res = await api.post(route, { username, password })
+      console.log(userData)
       const res = await api.post("/api/token/", { userData })
 
       // if (method === "login") {
@@ -32,9 +33,6 @@ const SignIn = () => {
           localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
           
           navigate("/user-profile/")
-      // } else {
-      //     navigate("/login")
-      // }
     } catch (error) {
         alert(error)
     } finally {
