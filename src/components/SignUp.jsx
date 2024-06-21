@@ -34,7 +34,7 @@ const SignUp = () => {
       // if (method === "login") {
           // localStorage.setItem(ACCESS_TOKEN, res.data.access);
           // localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
-          navigate("/user-profile")
+          navigate("/signin")
       // } else {
       //     navigate("/login")
       // }

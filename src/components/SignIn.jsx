@@ -21,7 +21,7 @@ const SignIn = () => {
     try { 
       api.get('/api/get-auth-data/', {
         data: {
-            "email": email,
+            "email": `${email}`,
         },
     })
     .then(response =>  {
