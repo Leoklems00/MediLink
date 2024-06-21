@@ -11,6 +11,7 @@ import LoadingIndicator from "./LoadingIndicator";
 const SignIn = () => {
   const [email, setEmail] = useState("");
   // const [userData, setUserData] = useState({});
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -22,13 +23,14 @@ const SignIn = () => {
     try { 
       console.log(email)
       api.post('/api/get-auth-data/', {email})
-    .then(response =>  {
+      .then(response =>  {
       const data = response.data;
       if (data.error) {
         navigate("/signin/")
       }
       else{
         const username = data.username;
+        setUsername(username);
         console.log(username);
 
         const userData = {
@@ -38,15 +40,7 @@ const SignIn = () => {
         // setUserData(userData);
         // const res = await api.post(route, { username, password })
         console.log(userData)
-        api.post("/api/token/", {username, password})
-        .then(response =>  {
-          const data = response.data;
-          console.log(data)
-          const accessToken = data.access
-          console.log(accessToken)
-          navigate("/user-profile/")
-
-        });
+        
     
           // if (method === "login") {
               // localStorage.setItem(ACCESS_TOKEN, res.data.access);
@@ -54,14 +48,25 @@ const SignIn = () => {
               
       }
       
+      
     })
+
     // .catch (error => {
       .catch (error => {
         alert("please try again")
         // navigate("/signin/")
         
     });
-      
+    await api.post("/api/token/", {username, password})
+      .then(response =>  {
+        const data = response.data;
+        console.log(data)
+        const accessToken = data.access
+        console.log(accessToken)
+        navigate("/user-profile/")
+
+      });
+        
     } catch (error) {
         // alert(error)
     } finally {
