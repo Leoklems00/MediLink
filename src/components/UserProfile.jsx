@@ -5,39 +5,7 @@ import DashboardLayout from '../components/DashboardLayout';
 import Modal from '../components/modal';
 
 const UserProfile = () => {
-  const [email, setEmail] = useState([]);
-  const [name, setName] = useState([]);
-  const [user, setUser] = useState([]);
-  const [id, setId] = useState([]);
-  useEffect(() => {
-      getUser();
-    }, []);
-  
-  api.get('/api/get-user/')
-  .then(response => {
-      const email = response.data.email;
-      const name = response.data.name;
-      const id = response.data.id;
-      setEmail(email);
-      setName(name);
-      setId(id);
-      console.log(email)
-      console.log(name)
-  })
-
-  // const getUser = () => {
-  //     api
-  //         .get("patient/id/")
-  //         .then((res) => res.data)
-  //         .then((data) => {
-  //             setUser(data);
-  //             console.log(data);
-  //         })
-  //         .catch((err) => alert(err));
-  //   };
-  // };
- 
-  // const [user, setUser] = useState(null);
+  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -65,7 +33,7 @@ const UserProfile = () => {
 
   const getUser = async () => {
     try {
-      const res = await api.get("patient/id/");
+      const res = await api.get("patient/1/");
       const data = res.data;
       console.log("API response data:", data);
       setUser(data);
@@ -117,11 +85,6 @@ const UserProfile = () => {
         </div>
         <div className="mb-4">
           <label className="block text-gray-700 font-medium mb-1">Email:</label>
-          <p className="border-b p-2 text-gray-900">{user.user.email}</p>
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 font-medium mb-1">Specialization:</label>
-          <p className="border-b p-2 text-gray-900">General Practitioner</p>
           <p className="border-b p-2 text-gray-900">{user.email || 'klemz@gmail.com'}</p>
         </div>
       
