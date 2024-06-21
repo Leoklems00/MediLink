@@ -19,11 +19,8 @@ const SignIn = () => {
     e.preventDefault();
     // Handle sign-in logic here
     try { 
-      api.get('/api/get-auth-data/', {
-        data: {
-            "email": `${email}`,
-        },
-    })
+      console.log(email)
+      api.get('/api/get-auth-data/', {email})
     .then(response =>  {
       const data = response.data;
       if (data.error) {
