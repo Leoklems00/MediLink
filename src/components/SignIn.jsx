@@ -38,15 +38,14 @@ const SignIn = () => {
         setUserData(userData);
         // const res = await api.post(route, { username, password })
         console.log(userData)
-        // const res = await api.post("/api/token/", { userData })
-        // const res = api.post("/api/token/", userData)
-        // api.post("/api/token/", userData)
-  
-        // // if (method === "login") {
-        //     // localStorage.setItem(ACCESS_TOKEN, res.data.access);
-        //     // localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
-            
-        //     navigate("/user-profile/")
+        const res = api.post("/api/token/", userData)
+    
+          // if (method === "login") {
+              // localStorage.setItem(ACCESS_TOKEN, res.data.access);
+              // localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
+              const accessToken = res.data.access
+              console.log(accessToken)
+              navigate("/user-profile/")
       }
       
     })
