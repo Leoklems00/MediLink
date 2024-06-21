@@ -42,18 +42,21 @@ const SignIn = () => {
         .then(response =>  {
           const data = response.data;
           console.log(data)
+          const accessToken = res.data.access
+          console.log(accessToken)
+          navigate("/user-profile/")
+
         });
     
           // if (method === "login") {
               // localStorage.setItem(ACCESS_TOKEN, res.data.access);
               // localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
-              const accessToken = res.data.access
-              console.log(accessToken)
-              navigate("/user-profile/")
+              
       }
       
     })
-    .catch (error => {
+    // .catch (error => {
+      .catch (error => {
         alert("please try again")
         // navigate("/signin/")
         
