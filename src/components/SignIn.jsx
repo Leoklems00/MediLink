@@ -42,8 +42,8 @@ const SignIn = () => {
         .then(response =>  {
           const data = response.data;
           console.log(data)
-          const accessToken = res.data.access
-          console.log(accessToken)
+          // const accessToken = res.data.access
+          // console.log(accessToken)
           navigate("/user-profile/")
 
         });
