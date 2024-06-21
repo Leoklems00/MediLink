@@ -6,6 +6,7 @@ import Modal from '../components/modal';
 
 const UserProfile = () => {
   const [user, setUser] = useState(null);
+  const [email, setEmail] = useState(null);
   const [id, setId] = useState(null);
   const [name_, setName] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -39,8 +40,9 @@ const UserProfile = () => {
       // },
   })
   .then(response => {
-      const user = response.data.user;
+      const email = response.data.email;
       const name_ = response.data.name;
+      const id = response.data.id;
       setName(name_);
       setId(id);
       console.log(user)
