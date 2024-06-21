@@ -50,13 +50,13 @@ const SignIn = () => {
       
     })
     .catch (error => {
-        alert(error)
+        alert("please try again")
         // navigate("/signin/")
         
     });
       
     } catch (error) {
-        alert(error)
+        // alert(error)
     } finally {
         setLoading(false)
     }
