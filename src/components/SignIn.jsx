@@ -38,8 +38,8 @@ const SignIn = () => {
         // setUserData(userData);
         // const res = await api.post(route, { username, password })
         console.log(userData)
-        const res = api.post("/api/token/", {username, password}).
-        then(response =>  {
+        const res = api.post("/api/token/", {username, password})
+        .then(response =>  {
           const data = response.data;
           console.log(data)
         });
