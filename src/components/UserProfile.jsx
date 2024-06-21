@@ -38,7 +38,7 @@ const UserProfile = () => {
   const getUser = async () => {
 
     try {
-      api.get('/api/get-patient/')
+      api.get('/api/get-patient/', {})
       .then(response => {
         console.log(response.data)
           const email = response.data.email;
