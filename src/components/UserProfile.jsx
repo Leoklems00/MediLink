@@ -34,24 +34,25 @@ const UserProfile = () => {
     getUser();
   }, []);
 
-  api.get('/api/get-user/', {
-      // headers: {
-      //     Authorization: `Bearer ${accessToken}`,
-      // },
-  })
-  .then(response => {
-      const email = response.data.email;
-      const name_ = response.data.name;
-      const id = response.data.id;
-      setEmail(email);
-      setName(name_);
-      setId(id);
-      console.log(user)
-      console.log(name_)
-  })
 
   const getUser = async () => {
+
     try {
+      api.get('/api/get-user/', {
+          // headers: {
+          //     Authorization: `Bearer ${accessToken}`,
+          // },
+      })
+      .then(response => {
+          const email = response.data.email;
+          const name_ = response.data.name;
+          const id = response.data.id;
+          setEmail(email);
+          setName(name_);
+          setId(id);
+          console.log(user)
+          console.log(name_)
+      })
       const res = await api.get(`patient/${id}/`);
       const data = res.data;
       console.log("API response data:", data);
