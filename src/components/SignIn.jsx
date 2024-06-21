@@ -21,7 +21,7 @@ const SignIn = () => {
     // Handle sign-in logic here
     try { 
       console.log(email)
-      await api.post('/api/get-auth-data/', {email})
+      api.post('/api/get-auth-data/', {email})
     .then(response =>  {
       const data = response.data;
       if (data.error) {
@@ -56,7 +56,7 @@ const SignIn = () => {
         
     });
 
-      api.post("/api/token/", userData)
+      await api.post("/api/token/", userData)
     
           // if (method === "login") {
               // localStorage.setItem(ACCESS_TOKEN, res.data.access);
