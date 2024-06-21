@@ -10,6 +10,7 @@ import LoadingIndicator from "./LoadingIndicator";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -19,20 +20,46 @@ const SignIn = () => {
     e.preventDefault();
     // Handle sign-in logic here
     try { 
-      const userData = {
-        "email": email,
-        "password": password,
+      api.get('/api/get-auth-data/', {
+        data: {
+            "email": email,
+        },
+    })
+    .then(response =>  {
+      const data = response.data;
+      if (data.error) {
+        navigate("/signin/")
       }
+      else{
+        const username = data.username;
+        setUsername(username);
+        console.log(username);
 
-      // const res = await api.post(route, { username, password })
-      console.log(userData)
-      const res = await api.post("/api/token/", { userData })
+        const userData = {
+          "username": username,
+          "password": password,
+        }
+  
+        // const res = await api.post(route, { username, password })
+        console.log(userData)
+        // const res = await api.post("/api/token/", { userData })
+        const res = api.post("/api/token/", { userData })
+  
+        // if (method === "login") {
+            localStorage.setItem(ACCESS_TOKEN, res.data.access);
+            localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
+            
+            navigate("/user-profile/")
+      }
+      
+    })
+    .catch (error => {
+        alert(error)
+        navigate("/signin/")
+        
+    });
 
-      // if (method === "login") {
-          localStorage.setItem(ACCESS_TOKEN, res.data.access);
-          localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
-          
-          navigate("/user-profile/")
+      
     } catch (error) {
         alert(error)
     } finally {
