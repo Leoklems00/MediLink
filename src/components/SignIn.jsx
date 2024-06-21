@@ -41,8 +41,8 @@ const SignIn = () => {
         const res = api.post("/api/token/", userData)
   
         // if (method === "login") {
-            localStorage.setItem(ACCESS_TOKEN, res.data.access);
-            localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
+            // localStorage.setItem(ACCESS_TOKEN, res.data.access);
+            // localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
             
             navigate("/user-profile/")
       }
@@ -50,7 +50,7 @@ const SignIn = () => {
     })
     .catch (error => {
         alert(error)
-        navigate("/signin/")
+        // navigate("/signin/")
         
     });
 

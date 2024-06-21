@@ -40,6 +40,7 @@ const SignUp = () => {
       // }
     } catch (error) {
         alert(error)
+        navigate("/signup")
     } finally {
         setLoading(false)
     }
