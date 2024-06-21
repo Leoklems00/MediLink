@@ -38,11 +38,7 @@ const UserProfile = () => {
   const getUser = async () => {
 
     try {
-      api.get('/api/get-user/', {
-          // headers: {
-          //     Authorization: `Bearer ${accessToken}`,
-          // },
-      })
+      api.get('/api/get-user/')
       .then(response => {
         console.log(response.data)
           const email = response.data.email;
