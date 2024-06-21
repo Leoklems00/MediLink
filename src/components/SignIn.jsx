@@ -20,10 +20,8 @@ const SignIn = () => {
     // Handle sign-in logic here
     try { 
       const userData = {
-        "user": {
-          "email": email,
-          "password": password,
-        },
+        "email": email,
+        "password": password,
       }
 
       // const res = await api.post(route, { username, password })
@@ -32,7 +30,8 @@ const SignIn = () => {
       // if (method === "login") {
           localStorage.setItem(ACCESS_TOKEN, res.data.access);
           localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
-          navigate("/user-profile")
+          
+          navigate("/user-profile/")
       // } else {
       //     navigate("/login")
       // }

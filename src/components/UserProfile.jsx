@@ -4,14 +4,29 @@ import api from "../api";
 import DashboardLayout from '../components/DashboardLayout'
 
 const UserProfile = () => {
+  const [email, setEmail] = useState([]);
+  const [name, setName] = useState([]);
   const [user, setUser] = useState([]);
+  const [id, setId] = useState([]);
   useEffect(() => {
       getUser();
     }, []);
+  
+  api.get('/api/get-user/')
+  .then(response => {
+      const email = response.data.email;
+      const name = response.data.name;
+      const id = response.data.id;
+      setEmail(email);
+      setName(name);
+      setId(id);
+      console.log(email)
+      console.log(name)
+  })
 
   const getUser = () => {
       api
-          .get("patient/1/")
+          .get("patient/id/")
           .then((res) => res.data)
           .then((data) => {
               setUser(data);
@@ -32,7 +47,7 @@ const UserProfile = () => {
         </div>
         <div className="mb-4">
           <label className="block text-gray-700 font-medium mb-1">Email:</label>
-          <p className="border-b p-2 text-gray-900">user.user.email</p>
+          <p className="border-b p-2 text-gray-900">{user.user.email}</p>
         </div>
         <div className="mb-4">
           <label className="block text-gray-700 font-medium mb-1">Specialization:</label>
