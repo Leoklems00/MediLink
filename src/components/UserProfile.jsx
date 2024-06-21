@@ -38,12 +38,13 @@ const UserProfile = () => {
   const getUser = async () => {
 
     try {
-      api.get('/api/get-patient/', {
+      api.get('/api/get-user/', {
           // headers: {
           //     Authorization: `Bearer ${accessToken}`,
           // },
       })
       .then(response => {
+        console.log(response.data)
           const email = response.data.email;
           const name_ = response.data.name;
           const id = response.data.id;
