@@ -41,7 +41,7 @@ const UserProfile = () => {
       api.get('/api/get-patient/', {})
       .then(response => {
         console.log(response.data)
-          const email = response.data.email;
+          // const email = response.data.email;
           const name_ = response.data.name;
           const id = response.data.id;
           // setEmail(email);
