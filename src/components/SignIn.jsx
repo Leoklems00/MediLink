@@ -57,7 +57,7 @@ const SignIn = () => {
         // navigate("/signin/")
         
     });
-    api.post("/api/token/", {username, password,})
+    api.post("/api/token/", {username, password})
       .then(response =>  {
         const data = response.data;
         console.log(data)
