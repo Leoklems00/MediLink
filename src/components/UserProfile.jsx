@@ -50,6 +50,7 @@ const UserProfile = () => {
           console.log(id)
           console.log(name_)
       })
+      console.log("id : "+id)
       const res = api.get('patient/'+id+'/');
       const data = res.data;
       console.log("API response data:", data);
