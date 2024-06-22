@@ -24,12 +24,12 @@ const SignIn = () => {
       console.log(email)
       api.post('/api/get-auth-data/', {email})
       .then(response =>  {
-      const data = response.data;
-      if (data.error) {
+      const auth_data = response.data;
+      if (auth_data.error) {
         navigate("/signin/")
       }
       else{
-        const username = data.username;
+        const username = auth_data.username;
         // setUsername(username);
         console.log(username);
 
