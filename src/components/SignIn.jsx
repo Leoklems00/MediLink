@@ -11,7 +11,7 @@ import LoadingIndicator from "./LoadingIndicator";
 const SignIn = () => {
   const [email, setEmail] = useState("");
   // const [userData, setUserData] = useState({});
-  const [username, setUsername] = useState('');
+  // const [username, setUsername] = useState('');
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -30,7 +30,7 @@ const SignIn = () => {
       }
       else{
         const username = data.username;
-        setUsername(username);
+        // setUsername(username);
         console.log(username);
 
         const userData = {
