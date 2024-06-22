@@ -6,7 +6,7 @@ import Modal from '../components/modal';
 
 const UserProfile = () => {
   const [user, setUser] = useState(null);
-  const [email, setEmail] = useState(null);
+  // const [email, setEmail] = useState(null);
   const [id, setId] = useState(null);
   const [name_, setName] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -44,7 +44,7 @@ const UserProfile = () => {
           const email = response.data.email;
           const name_ = response.data.name;
           const id = response.data.id;
-          setEmail(email);
+          // setEmail(email);
           setName(name_);
           setId(id);
           console.log(id)
@@ -113,7 +113,6 @@ const UserProfile = () => {
         >
           Find an Expert
         </button>
-        {email || 'klemz@gmail.com'}
       </div>
 
       <Modal isOpen={isModalOpen} onClose={handleModalClose}>
