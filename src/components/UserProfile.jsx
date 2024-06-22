@@ -35,7 +35,7 @@ const UserProfile = () => {
   });
 
 
-  const getUser = async () => {
+  const getUser = () => {
 
     try {
       api.get('/api/get-patient/', {})
