@@ -40,7 +40,18 @@ const SignIn = () => {
         // setUserData(userData);
         // const res = await api.post(route, { username, password })
         console.log(userData)
-        
+        api.post("/api/token/", userData)
+        .then(response =>  {
+          const data = response.data;
+          console.log(data)
+          localStorage.setItem(ACCESS_TOKEN, data.access);
+          localStorage.setItem(REFRESH_TOKEN, data.refresh);
+          const accessToken = data.access
+          console.log(accessToken)
+          
+          navigate("/user-profile/")
+  
+        });
     
           // if (method === "login") {
               // localStorage.setItem(ACCESS_TOKEN, res.data.access);
@@ -57,18 +68,7 @@ const SignIn = () => {
         // navigate("/signin/")
         
     });
-    api.post("/api/token/", {username, password})
-      .then(response =>  {
-        const data = response.data;
-        console.log(data)
-        localStorage.setItem(ACCESS_TOKEN, data.access);
-        localStorage.setItem(REFRESH_TOKEN, data.refresh);
-        const accessToken = data.access
-        console.log(accessToken)
-        
-        navigate("/user-profile/")
-
-      });
+   
 
     } catch (error) {
         // alert(error)
