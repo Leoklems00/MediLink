@@ -49,8 +49,8 @@ const UserProfile = () => {
           setId(id);
           console.log(id)
           console.log(name_)
-          const res = api.get('patient/'+id+'/');
-          const data = res.data;
+          // const res = api.get('patient/'+id+'/');
+          const data = response.data;
           console.log("API response data:", data);
           setUser(data);
           setLoading(false);
