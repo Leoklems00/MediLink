@@ -35,7 +35,7 @@ const UserProfile = () => {
   });
 
 
-  const getUser = () => {
+  const getUser = async () => {
 
     try {
       api.get('/api/get-patient/', {})
@@ -49,13 +49,15 @@ const UserProfile = () => {
           setId(id);
           console.log(id)
           console.log(name_)
+          const res = api.get('patient/'+id+'/');
+          const data = res.data;
+          console.log("API response data:", data);
+          setUser(data);
+          setLoading(false);
       })
       console.log("id : "+id)
-      const res = api.get('patient/'+id+'/');
-      const data = res.data;
-      console.log("API response data:", data);
-      setUser(data);
-      setLoading(false);
+      
+      
     } catch (err) {
       console.error("Error fetching user data:", err);
       setError(err.message);
