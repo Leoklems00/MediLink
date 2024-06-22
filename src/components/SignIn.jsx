@@ -57,16 +57,19 @@ const SignIn = () => {
         // navigate("/signin/")
         
     });
-    await api.post("/api/token/", {username, password})
+    await api.post("/api/token/", {username, password,})
       .then(response =>  {
         const data = response.data;
         console.log(data)
+        localStorage.setItem(ACCESS_TOKEN, data.access);
+        localStorage.setItem(REFRESH_TOKEN, data.refresh);
         const accessToken = data.access
         console.log(accessToken)
+        
         navigate("/user-profile/")
 
       });
-        
+
     } catch (error) {
         // alert(error)
     } finally {
